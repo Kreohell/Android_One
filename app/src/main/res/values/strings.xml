@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Weather_Lesson_One</string>
+    <string name="button">Go!</string>
+    <string name="city">City</string>
+    <string name="temperature">temperature</string>
+    <string name="wind">wind</string>
+    <string name="pressure">pressure</string>
+    <string name="humidity">humidity</string>
+    <string name="find">Find</string>
+    <string name="enter_name">Enter the name of the city</string>
 </resources>
