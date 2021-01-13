@@ -2,11 +2,11 @@ package ru.geekbrains.weather_lesson_one;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -18,19 +18,28 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     Spinner citySpinnerView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        startSpinner();
+        Toast.makeText(this, "Created", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "Created: ");
+    }
 
+    public void onClick(View v) {
+        EditText cityNameText = findViewById(R.id.editText2);
+        String name = cityNameText.getText().toString();
+        Intent intent = new Intent(MainActivity.this, SelectedCityActivity.class);
+        intent.putExtra("name", name);
+        startActivity(intent);
+    }
+
+    private void startSpinner(){
         citySpinnerView = findViewById(R.id.spinner);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, cities);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         citySpinnerView.setAdapter(adapter);
-
-        Toast.makeText(this, "Created", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "Created: ");
     }
 
     @Override
