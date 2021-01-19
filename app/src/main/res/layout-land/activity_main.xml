@@ -1,67 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/state_gray"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/editText2"
-        app:layout_constraintEnd_toEndOf="@id/editText2"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:hint="@string/enter_name"
-        app:layout_constraintEnd_toEndOf="@id/checkBox"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+    <FrameLayout android:name="ru.geekbrains.weather_lesson_one.fragments.SelectCityFragment"
+        android:id="@+id/cities"
+        android:layout_weight="1"
+        android:layout_width="0px"
+        android:layout_height="match_parent"
+        tools:ignore="Instantiatable" />
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:buttonTint="@color/dark_gray"
-        android:text="@string/wind"
-        app:layout_constraintStart_toStartOf="@id/editText2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/editText2"
-        tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/find"
-        app:layout_constraintEnd_toEndOf="@id/checkBox3"
-        app:layout_constraintStart_toStartOf="@id/checkBox3"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox3"
-        tools:ignore="MissingConstraints" />
+    <FrameLayout
+        android:id="@+id/weather_in_city"
+        android:layout_width="0px"
+        android:layout_height="match_parent"
+        android:layout_weight="0"
+        android:background="?android:attr/detailsElementBackground"/>
 
-    <CheckBox
-        android:id="@+id/checkBox3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:buttonTint="@color/dark_gray"
-        android:text="@string/humidity"
-        app:layout_constraintStart_toStartOf="@+id/checkBox2"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
-
-    <CheckBox
-        android:id="@+id/checkBox2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:buttonTint="@color/dark_gray"
-        android:text="@string/pressure"
-        app:layout_constraintStart_toStartOf="@+id/checkBox"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

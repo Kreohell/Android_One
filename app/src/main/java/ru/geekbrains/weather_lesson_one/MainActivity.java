@@ -1,6 +1,9 @@
 package ru.geekbrains.weather_lesson_one;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,9 +14,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import ru.geekbrains.weather_lesson_one.fragments.SelectCityFragment;
+import ru.geekbrains.weather_lesson_one.fragments.ShowCityFragment;
 
-    String TAG = "WeatherApp";
+public class MainActivity extends AppCompatActivity implements SelectCityListener {
+
     String[] cities = {"City_1", "City_2", "City_3", "City_4", "City_5"};
     ArrayAdapter<String> adapter;
     Spinner citySpinnerView;
@@ -22,66 +27,65 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startSpinner();
-        Toast.makeText(this, "Created", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "Created: ");
-    }
 
-    public void onClick(View v) {
-        EditText cityNameText = findViewById(R.id.editText2);
-        String name = cityNameText.getText().toString();
-        Intent intent = new Intent(MainActivity.this, SelectedCityActivity.class);
-        intent.putExtra("name", name);
-        startActivity(intent);
-    }
+        FragmentManager fm = getSupportFragmentManager();
+        Fragment fragment = fm.findFragmentById(R.id.cities);
+        if (fragment == null) {
+            fragment = new SelectCityFragment();
+            fm.beginTransaction()
+                    .add(R.id.cities, fragment, ShowCityFragment.TAG)
+                    .commit();
+        }
 
-    private void startSpinner(){
-        citySpinnerView = findViewById(R.id.spinner);
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, cities);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        citySpinnerView.setAdapter(adapter);
     }
-
     @Override
-    protected void onStart() {
-        super.onStart();
-        Toast.makeText(this, "Started", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "Started: ");
+    public void onOpenFragmentWeatherMain(String string) {
+        if(string == null)throw new RuntimeException("Не выбран город");
+
+        FragmentManager fm = getSupportFragmentManager();
+
+        Fragment fragment = fm.findFragmentById(R.id.cities);
+        if (fragment instanceof SelectCityFragment) {
+            Fragment fragmentReplace;
+            fragmentReplace = new ShowCityFragment();
+
+            Bundle bundle = new Bundle();
+            bundle.putString(ShowCityFragment.KEY, string);
+            fragmentReplace.setArguments(bundle);
+
+            fm.beginTransaction()
+                    .replace(R.id.cities, fragmentReplace, ShowCityFragment.TAG)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .addToBackStack(ShowCityFragment.TAG)
+                    .commit();
+        }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Toast.makeText(this, "Resumed", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "Resumed: ");
-    }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Toast.makeText(this, "Paused", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "Paused: ");
-    }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Toast.makeText(this, "Stopped", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "Stopped: ");
-    }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Toast.makeText(this, "Restarted", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "Restarted: ");
-    }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Toast.makeText(this, "Destroyed", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "Destroyed: ");
-    }
-    
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        int countOfFragmentInManager = getSupportFragmentManager().getBackStackEntryCount();
+//        if(countOfFragmentInManager > 0) {
+//            getSupportFragmentManager().popBackStack();
+//        }
+//    }
+
+//    public void onClick(View v) {
+//        EditText cityNameText = findViewById(R.id.editText2);
+//        String name = cityNameText.getText().toString();
+//        Intent intent = new Intent(MainActivity.this, SelectedCityActivity.class);
+//        intent.putExtra("name", name);
+//        startActivity(intent);
+//    }
+//
+//    private void startSpinner(){
+//        citySpinnerView = findViewById(R.id.spinner);
+//        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, cities);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        citySpinnerView.setAdapter(adapter);
+//    }
 }
