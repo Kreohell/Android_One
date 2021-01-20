@@ -27,47 +27,4 @@ public class ShowCityFragment extends Fragment {
         textView.setText(textFromActivity);
         return view;
     }
-
-
-
-
-
-//    TextView cityText;
-//
-//    static ShowCityFragment create(WeatherContainer container){
-//        ShowCityFragment fragment = new ShowCityFragment();    // создание
-//
-//        // Передача параметра
-//        Bundle args = new Bundle();
-//        args.putSerializable("index", container);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
-//
-//    String getCityName() {
-//        WeatherContainer coatContainer = (WeatherContainer) (Objects.requireNonNull(getArguments())
-//                .getSerializable("index"));
-//        try {
-//            return coatContainer.cityName;
-//        } catch (Exception e) {
-//            return "";
-//        }
-//    }
-//
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        return inflater.inflate(R.layout.fragment_show_city, container, false);
-//    }
-//
-//    @Override
-//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//        initViews(view);
-//    }
-//
-//    private void initViews(View view) {
-//        cityText = view.findViewById(R.id.textView2);
-//      }
-
 }

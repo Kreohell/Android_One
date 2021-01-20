@@ -21,7 +21,7 @@ import ru.geekbrains.weather_lesson_one.SelectCityListener;
 
 public class SelectCityFragment extends Fragment {
 
-    private boolean isExist;
+    public static final String KEY = "some";
     private int currentPosition = 0;
     private SelectCityListener selectCityListener;
     private EditText cityNameText;
@@ -36,12 +36,10 @@ public class SelectCityFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_select_city, container, false);
         cityNameText = view.findViewById(R.id.editText2);
         findBtn = view.findViewById(R.id.button);
-//        checkBoxSpeedWing = view.findViewById(R.id.cbWindSpeed);
 
         findBtn.setOnClickListener(v -> {
             String s = cityNameText.getText().toString();
             selectCityListener.onOpenFragmentWeatherMain(s);
-
         });
         setRetainInstance(true);
         return view;
@@ -56,69 +54,4 @@ public class SelectCityFragment extends Fragment {
             throw new RuntimeException(context.toString());
         }
     }
-
-//    @Override
-//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//        initViews(view);
-//
-////        findBtn.setOnClickListener(v -> {
-////            EditText cityNameText = v.findViewById(R.id.editText2);
-////            String name = cityNameText.getText().toString();
-////            Intent intent = new Intent(SelectCityFragment.this, ShowCityFragment.class);
-////            intent.putExtra("name", name);
-////            startActivity(intent);
-////        });
-//    }
-//
-//    @Override
-//    public void onActivityCreated(Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//        isExist = getResources().getConfiguration().orientation
-//                == Configuration.ORIENTATION_LANDSCAPE;
-//        if (savedInstanceState != null) {
-//
-//            currentPosition = savedInstanceState.getInt("CurrentCity", 0);
-//        }
-//        if (isExist) {
-//            showCity();
-//        }
-//    }
-//
-//    private void initViews(View view) {
-//        cityNameText = view.findViewById(R.id.editText2);
-//        findBtn = view.findViewById(R.id.button);
-//        citySpinnerView = view.findViewById(R.id.spinner);
-//    }
-//
-//    private void showCity(){
-//        if(isExist) {
-//            ShowCityFragment detail = (ShowCityFragment)
-//                    getFragmentManager().findFragmentById(R.id.weather_in_city);
-//            if (detail == null) {
-//                detail = ShowCityFragment.create(getWeatherContainer());
-//                FragmentTransaction ft = getFragmentManager().beginTransaction();
-//                ft.replace(R.id.weather_in_city, detail);
-//                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-//                //ft.addToBackStack(null);
-//                ft.addToBackStack("Some_Key");
-//                ft.commit();
-//            }
-//        }  else {
-//        Intent intent = new Intent();
-//        intent.setClass(getActivity(), ShowCityFragment.class);
-//        // и передадим туда параметры
-////        intent.putExtra("index", getCoatContainer());
-//        startActivity(intent);
-//    }
-//
-//    }
-//
-//    private WeatherContainer getWeatherContainer() {
-//        WeatherContainer container = new WeatherContainer();
-//        container.position = currentPosition;
-//        container.cityName = cities[currentPosition];
-//        return container;
-//    }
-
 }
