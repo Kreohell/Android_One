@@ -15,30 +15,32 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputEditText;
+
 import ru.geekbrains.weather_lesson_one.R;
 import ru.geekbrains.weather_lesson_one.SelectCityListener;
 
 
 public class SelectCityFragment extends Fragment {
 
-    public static final String KEY = "some";
-    private int currentPosition = 0;
     private SelectCityListener selectCityListener;
-    private EditText cityNameText;
-    private Button findBtn;
-    String[] cities = {"City_1", "City_2", "City_3", "City_4", "City_5"};
-    ArrayAdapter<String> adapter;
-    Spinner citySpinnerView;
+    private TextInputEditText cityNameText;
+    private MaterialButton findBtn;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_select_city, container, false);
-        cityNameText = view.findViewById(R.id.editText2);
-        findBtn = view.findViewById(R.id.button);
+        cityNameText = view.findViewById(R.id.inputTextFindCity);
+        findBtn = view.findViewById(R.id.btnFindCity);
 
         findBtn.setOnClickListener(v -> {
             String s = cityNameText.getText().toString();
+            Snackbar.make(view, "Finding city...", Snackbar.LENGTH_SHORT)
+                    .show();
             selectCityListener.onOpenFragmentWeatherMain(s);
         });
         setRetainInstance(true);

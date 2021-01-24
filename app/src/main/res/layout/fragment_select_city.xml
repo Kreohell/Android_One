@@ -7,23 +7,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/editText2"
-        app:layout_constraintEnd_toEndOf="@id/editText2"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/cityText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:hint="@string/enter_name"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputTextFindCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_name"
+            android:inputType="textEmailAddress"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
         android:id="@+id/checkBox"
@@ -32,21 +33,20 @@
         android:layout_marginTop="68dp"
         android:buttonTint="@color/dark_gray"
         android:text="@string/wind"
-        app:layout_constraintEnd_toEndOf="@+id/editText2"
-        app:layout_constraintStart_toStartOf="@id/editText2"
-        app:layout_constraintTop_toTopOf="@id/editText2"
+        app:layout_constraintEnd_toEndOf="@+id/cityText"
+        app:layout_constraintStart_toStartOf="@id/cityText"
+        app:layout_constraintTop_toTopOf="@id/cityText"
         tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/button"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnFindCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClick"
-        android:text="@string/find"
+        android:text="@string/Find"
         app:layout_constraintEnd_toEndOf="@id/checkBox3"
         app:layout_constraintStart_toStartOf="@id/checkBox3"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox3"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBox3" />
 
     <CheckBox
         android:id="@+id/checkBox3"

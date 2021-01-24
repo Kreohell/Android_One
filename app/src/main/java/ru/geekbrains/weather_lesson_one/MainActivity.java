@@ -18,9 +18,6 @@ import ru.geekbrains.weather_lesson_one.fragments.ShowCityFragment;
 
 public class MainActivity extends AppCompatActivity implements SelectCityListener {
 
-    String[] cities = {"City_1", "City_2", "City_3", "City_4", "City_5"};
-    ArrayAdapter<String> adapter;
-    Spinner citySpinnerView;
     boolean isExist;
 
     @Override
@@ -73,10 +70,4 @@ public class MainActivity extends AppCompatActivity implements SelectCityListene
             }
         }
     }
-//    private void startSpinner(){
-//        citySpinnerView = findViewById(R.id.spinner);
-//        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, cities);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        citySpinnerView.setAdapter(adapter);
-//    }
 }
