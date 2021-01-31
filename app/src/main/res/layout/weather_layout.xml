@@ -9,23 +9,23 @@
 
 
     <TextView
-        android:id="@+id/textViewDay"
+        android:id="@+id/textViewDayTwo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/Day"
         android:gravity="center"
-        app:layout_constraintEnd_toStartOf="@+id/textViewTemperature"
+        app:layout_constraintEnd_toStartOf="@+id/textViewTemperatureTwo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewTemperature"
+        android:id="@+id/textViewTemperatureTwo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/temperature"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewDay"
+        app:layout_constraintStart_toEndOf="@+id/textViewDayTwo"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -34,28 +34,28 @@
         android:layout_height="wrap_content"
         android:text="@string/wind"
         android:gravity="center"
-        app:layout_constraintEnd_toStartOf="@+id/textViewHumidity"
+        app:layout_constraintEnd_toStartOf="@+id/textViewHumidityTwo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDay" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDayTwo" />
 
     <TextView
-        android:id="@+id/textViewHumidity"
+        android:id="@+id/textViewHumidityTwo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/humidity"
         android:gravity="center"
-        app:layout_constraintEnd_toStartOf="@+id/textViewPressure"
+        app:layout_constraintEnd_toStartOf="@+id/textViewPressureTwo"
         app:layout_constraintStart_toEndOf="@+id/textViewWind"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDay" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDayTwo" />
 
     <TextView
-        android:id="@+id/textViewPressure"
+        android:id="@+id/textViewPressureTwo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/pressure"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewHumidity"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDay" />
+        app:layout_constraintStart_toEndOf="@+id/textViewHumidityTwo"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDayTwo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

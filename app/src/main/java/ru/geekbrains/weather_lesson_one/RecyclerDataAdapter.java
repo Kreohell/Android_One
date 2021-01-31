@@ -46,8 +46,8 @@ public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapte
 
         public ViewHolder (@NonNull View view){
             super(view);
-            textDay = view.findViewById(R.id.textViewDay);
-            textTemperature = view.findViewById(R.id.textViewTemperature);
+            textDay = view.findViewById(R.id.textViewDayTwo);
+            textTemperature = view.findViewById(R.id.textViewTemperatureTwo);
         }
     }
 

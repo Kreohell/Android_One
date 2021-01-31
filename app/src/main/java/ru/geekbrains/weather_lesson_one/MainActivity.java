@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements SelectCityListene
 
     @Override
     public void onOpenFragmentWeatherMain(String string) {
-        if (string == null) throw new RuntimeException("Не выбран город");
 
         Bundle bundle = new Bundle();
         bundle.putString(ShowCityFragment.KEY, string);
